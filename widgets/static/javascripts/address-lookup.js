@@ -17,7 +17,7 @@ var addressLookup = function(event) {
     if(isValidPostcode(searchValue)) {
         $.ajax({
               type: 'GET',
-              url: 'http://address.openregister.org/search?_query='+searchValue+'&_representation=json',
+              url: 'http://address.openregister.org/search?postcode='+searchValue+'&_representation=json',
               contentType: 'application/json',
               success: function(data) {
                 renderAddresses(data);
