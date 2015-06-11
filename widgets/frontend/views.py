@@ -17,16 +17,16 @@ def index():
 @frontend.route('/country-picker')
 def country_picker():
     country_register = current_app.config['COUNTRY_REGISTER']
-    country_register_url = "%s/all.json" % country_register
-    res = requests.get(country_register_url, headers={"Content-type": "application/json"})
+    country_register_url = '%s/all.json' % country_register
+    res = requests.get(country_register_url, headers={'Content-type': 'application/json'})
     countries_json = res.json()
     countries = [country['entry'] for country in countries_json]
     countries.sort(key=lambda entry: entry['country'])
-    current_app.logger.info(countries)
     return render_template('country_picker.html', countries=countries, country_register=country_register)
 
 
 
 @frontend.route('/address-lookup')
 def address_lookup():
-    return render_template('address_lookup.html')
+    address_register = current_app.config['ADDRESS_REGISTER']
+    return render_template('address_lookup.html', address_register=address_register)

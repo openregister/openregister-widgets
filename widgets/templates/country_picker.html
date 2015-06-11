@@ -11,7 +11,6 @@
         <form class="form">
             <div class="form-group">
                 <label class="form-label-bold" for="country-selector">Pick a country</label>
-
                 <select name="Country" id="country-selector" autofocus="autofocus" autocorrect="off" autocomplete="off" class="auto-suggest form-control">
                   <option value="" selected="selected">Select Country</option>
                   {% for country in countries %}
@@ -23,6 +22,6 @@
         </form>
 
         <div class="about-panel">
-            <p>This pages uses data from the <a href="{{country_register}}">Country Register</a></p>
+            <p>This page uses data from the <a href="{{country_register}}">Country Register</a></p>
         </div>
     {% endblock %}
