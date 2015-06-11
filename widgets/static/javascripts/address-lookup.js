@@ -1,4 +1,4 @@
-// temp restriction for postcode search
+// temp restriction for address search by postcode only. will remove when full address index is running
 // courtesy of http://www.qodo.co.uk/blog/javascript-check-if-a-uk-postcode-is-valid/
 var isValidPostcode = function(postcode) {
     var postcodeRegEx = /[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}/i;
