@@ -14,7 +14,7 @@ Quickstart
 Then run the following commands to bootstrap your environment.
 
 ```
-mkvirtualenv --python=/path/to/required/python/version [appname]
+mkvirtualenv --python=/path/to/python3 widgets
 ```
 
 Install python requirements.
