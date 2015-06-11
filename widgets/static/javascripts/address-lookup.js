@@ -34,6 +34,16 @@ var addressLookup = function(event) {
 };
 
 var renderAddresses = function(addresses) {
+    addresses.sort(function(a,b) {
+        if (a.entry.property && b.entry.property) {
+            return a.entry.property.localeCompare(b.entry.property);
+        } else if (a.entry.street && b.entry.street) {
+            return a.entry.street.localeCompare(b.entry.street);
+        }
+        else {
+            return 0;
+        }
+    });
     $.each(addresses, function(index, address) {
         var template = $.templates("#template"),
             html = template.render({
