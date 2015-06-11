@@ -2,6 +2,11 @@
 widgets
 ===============================
 
+Prerequisites
+-------------
+* python 3
+* virtualenv and virtualenvwrapper
+
 
 Quickstart
 ----------
