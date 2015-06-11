@@ -14,12 +14,8 @@
 
                 <select name="Country" id="country-selector" autofocus="autofocus" autocorrect="off" autocomplete="off" class="auto-suggest form-control">
                   <option value="" selected="selected">Select Country</option>
-                      <option value="Afghanistan" data-alternative-spellings="AF افغانستان">Afghanistan</option>
-              <option value="Åland Islands" data-alternative-spellings="AX Aaland Aland" data-relevancy-booster="0.5">Åland Islands</option>
-              <option value="Albania" data-alternative-spellings="AL">Albania</option>
-              <option value="Algeria" data-alternative-spellings="DZ الجزائر">Algeria</option>
-                  {% for entry in countries %}
-                     <option value="{{entry.entry.country}}" data-alternative-spellings="{{ entry.entry.country }}">{{entry.entry.name}}</option>
+                  {% for country in countries %}
+                     <option value="{{country.country}}" data-alternative-spellings="{{ country.country }}">{{country.name}}</option>
                   {% endfor %}
                 </select>
             </div>
