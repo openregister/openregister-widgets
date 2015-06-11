@@ -8,24 +8,27 @@
     {% endblock %}
 
     {% block content %}
-    <h1 class="heading-xlarge">Country picker example</h1>
+        <h1 class="heading-xlarge">Country picker example</h1>
 
-    <form class="form">
-        <div class="form-group">
-            <label class="form-label-bold" for="country-selector">What country were you born in?</label>
+        <form class="form">
+            <div class="form-group">
+                <label class="form-label-bold" for="country-selector">Pick a country</label>
 
-            <select name="Country" id="country-selector" autofocus="autofocus" autocorrect="off" autocomplete="off" class="auto-suggest form-control">
-              <option value="" selected="selected">Select Country</option>
-                  <option value="Afghanistan" data-alternative-spellings="AF افغانستان">Afghanistan</option>
-          <option value="Åland Islands" data-alternative-spellings="AX Aaland Aland" data-relevancy-booster="0.5">Åland Islands</option>
-          <option value="Albania" data-alternative-spellings="AL">Albania</option>
-          <option value="Algeria" data-alternative-spellings="DZ الجزائر">Algeria</option>
-              {% for entry in countries %}
-                 <option value="{{entry.entry.country}}" data-alternative-spellings="{{ entry.entry.country }}">{{entry.entry.name}}</option>
-              {% endfor %}
-            </select>
+                <select name="Country" id="country-selector" autofocus="autofocus" autocorrect="off" autocomplete="off" class="auto-suggest form-control">
+                  <option value="" selected="selected">Select Country</option>
+                      <option value="Afghanistan" data-alternative-spellings="AF افغانستان">Afghanistan</option>
+              <option value="Åland Islands" data-alternative-spellings="AX Aaland Aland" data-relevancy-booster="0.5">Åland Islands</option>
+              <option value="Albania" data-alternative-spellings="AL">Albania</option>
+              <option value="Algeria" data-alternative-spellings="DZ الجزائر">Algeria</option>
+                  {% for entry in countries %}
+                     <option value="{{entry.entry.country}}" data-alternative-spellings="{{ entry.entry.country }}">{{entry.entry.name}}</option>
+                  {% endfor %}
+                </select>
+            </div>
+            <input type="submit" value="Submit" class="button">
+        </form>
+
+        <div class="about-panel">
+            <p>This pages uses data from the <a href="{{country_register}}">Country Register</a></p>
         </div>
-        <input type="submit" value="Submit" class="button">
-    </form>
-
-{% endblock %}
+    {% endblock %}
