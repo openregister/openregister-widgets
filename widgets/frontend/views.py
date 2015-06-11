@@ -22,3 +22,9 @@ def country_picker():
     countries = res.json()
     current_app.logger.info(countries)
     return render_template('country_picker.html', countries=countries, country_register=country_register)
+
+
+
+@frontend.route('/address-lookup')
+def address_lookup():
+    return render_template('address_lookup.html')

@@ -1,0 +1,18 @@
+{% extends "govuk_template.html" %}
+
+{% block head %}
+    <script src="{{asset_path}}javascripts/address_lookup.js"></script>
+{% endblock %}
+
+{% block content %}
+    <h1 class="heading-xlarge">Address lookup example</h1>
+
+    <form class="form">
+        <div class="form-group">
+            <label class="form-label-bold" for="country-selector">Find an address</label>
+        </div>
+    </form>
+    <div class="about-panel">
+        <p>This pages uses data from the <a href="#">Address Register</a></p>
+    </div>
+{% endblock %}
