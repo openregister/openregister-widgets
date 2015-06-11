@@ -8,8 +8,11 @@
         <script src="{{asset_path}}javascripts/address-lookup.js"></script>
 
         {% raw %}
-        <script id="template" type="text/x-jsrender">
+        <script id="address-template" type="text/x-jsrender">
           <li>{{:property}} {{:street}} {{:town}} {{:postcode}}</li>
+        </script>
+        <script id="country-template" type="text/x-jsrender">
+          <option value="{{:country}}" data-alternative-spellings="{{:country}}">{{:name}}</option>
         </script>
         {% endraw %}
     {% endblock %}
@@ -24,11 +27,8 @@
         <form class="form" id="country-form">
             <div class="form-group">
                 <label class="form-label-bold" for="country-selector">Pick a country</label>
-                <select name="Country" id="country-selector" autofocus="autofocus" autocorrect="off" autocomplete="off" class="auto-suggest form-control">
+                <select name="country" id="country-selector" autofocus="autofocus" autocorrect="off" autocomplete="off" class="auto-suggest form-control">
                   <option value="" selected="selected">Select Country</option>
-                  {% for country in countries %}
-                     <option value="{{country.country}}" data-alternative-spellings="{{ country.country }}">{{country.name}}</option>
-                  {% endfor %}
                 </select>
             </div>
             <input type="submit" value="Submit" class="button">

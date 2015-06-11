@@ -45,7 +45,7 @@ var renderAddresses = function(addresses) {
         }
     });
     $.each(addresses, function(index, address) {
-        var template = $.templates("#template"),
+        var template = $.templates("#address-template"),
             html = template.render({
                     'property': address.entry.property,
                     'street': address.entry.street,
