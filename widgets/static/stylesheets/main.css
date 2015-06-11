@@ -1,3 +1,9 @@
 .about-panel {
     margin-top: 20px;
 }
+
+.widget {
+    padding: 20px;
+    border: 1px solid #DEE0E2;
+    margin: 30px 0px;
+}

@@ -13,23 +13,16 @@
 {% block content %}
 
   <h1 class="heading-xlarge">Address lookup example</h1>
-    <div class="grid-row">
-      <div class="column-third">
-        <form id="address-lookup" class="form" method="post">
-          <div class="form-group">
-            <label class="form-label-bold" for="search">Find an address by full postcode e.g. BS8 1LB</label>
-            <input type="text" id="search" name="search"/>
-          </div>
-          <input type="submit" value="Submit" class="button">
-        </form>
-        <div class="about-panel">
-          <p>This page uses data from the <a href="{{address_register}}">Address Register</a></p>
-        </div>
+    <form id="address-lookup" class="form" method="post">
+      <div class="form-group">
+        <label class="form-label-bold" for="search">Find an address by full postcode e.g. BS8 1LB</label>
+        <input type="text" id="search" name="search"/>
       </div>
-      <div class="column-two-thirds">
-        <p class='message'></p>
-        <ul class="results">
-        </ul>
-      </div>
-    </div><!--end grid-row -->
+      <input type="submit" value="Submit" class="button">
+    </form>
+    <p class='message'></p>
+    <ul class="results"></ul>
+    <div class="about-panel">
+      <p>This page uses data from the <a href="{{address_register}}">Address Register</a></p>
+    </div>
 {% endblock %}

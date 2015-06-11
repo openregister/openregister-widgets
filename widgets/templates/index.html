@@ -1,11 +1,60 @@
 
 {% extends "govuk_template.html" %}
+    {% block head %}
+        <script src="{{asset_path}}javascripts/vendor/jquery.select-to-autocomplete.js"></script>
+        <script src="{{asset_path}}javascripts/vendor/jsrender.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{asset_path}}stylesheets/country-picker.css">
+        <script src="{{asset_path}}javascripts/country-picker.js"></script>
+        <script src="{{asset_path}}javascripts/address-lookup.js"></script>
+
+        {% raw %}
+        <script id="template" type="text/x-jsrender">
+          <li>{{:property}} {{:street}} {{:town}} {{:postcode}}</li>
+        </script>
+        {% endraw %}
+    {% endblock %}
+
 {% block content %}
 
     <h1 class="heading-large">Example widgets built using registers</h1>
-    <ul class="widget-list§">
-        <li><a href="{{url_for('frontend.country_picker')}}">Country picker</a></li>
-        <li><a href="{{url_for('frontend.address_lookup')}}">Address lookup</a></li>
-    </ul>
+
+    <!-- country picker -->
+    <div class="widget">
+        <h2 class="heading-medium">Country picker example</h2>
+        <form class="form" id="country-form">
+            <div class="form-group">
+                <label class="form-label-bold" for="country-selector">Pick a country</label>
+                <select name="Country" id="country-selector" autofocus="autofocus" autocorrect="off" autocomplete="off" class="auto-suggest form-control">
+                  <option value="" selected="selected">Select Country</option>
+                  {% for country in countries %}
+                     <option value="{{country.country}}" data-alternative-spellings="{{ country.country }}">{{country.name}}</option>
+                  {% endfor %}
+                </select>
+            </div>
+            <input type="submit" value="Submit" class="button">
+        </form>
+        <div class="about-panel">
+            <p>This widget uses data from the <a href="{{country_register}}">Country Register</a></p>
+        </div>
+    </div><!--end country picker -->
+
+    <!-- address lookup -->
+    <div class="widget">
+        <h2 class="heading-medium">Address lookup example</h2>
+        <form id="address-lookup" class="form" method="post">
+            <div class="form-group">
+                <label class="form-label-bold" for="search">Find an address by full postcode e.g. BS8 1LB</label>
+                <input type="text" id="search" name="search"/>
+            </div>
+            <input type="submit" value="Submit" class="button">
+        </form>
+
+        <p class='message'></p>
+        <ul class="results">
+        </ul>
+        <div class="about-panel">
+            <p>This widget uses data from the <a href="{{address_register}}">Address Register</a></p>
+        </div>
+    </div><!--end address lookup-->
 
 {% endblock %}
