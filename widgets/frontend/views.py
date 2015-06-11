@@ -21,6 +21,7 @@ def country_picker():
     res = requests.get(country_register_url, headers={"Content-type": "application/json"})
     countries_json = res.json()
     countries = [country['entry'] for country in countries_json]
+    countries.sort(key=lambda entry: entry['country'])
     current_app.logger.info(countries)
     return render_template('country_picker.html', countries=countries, country_register=country_register)
 
