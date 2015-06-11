@@ -2,6 +2,12 @@
 
 {% block head %}
     <script src="{{asset_path}}javascripts/address-lookup.js"></script>
+    <script src="{{asset_path}}javascripts/vendor/jsrender.min.js"></script>
+    {% raw %}
+    <script id="template" type="text/x-jsrender">
+      <li>{{:property}} {{:street}} {{:town}} {{:postcode}}</li>
+    </script>
+    {% endraw %}
 {% endblock %}
 
 {% block content %}

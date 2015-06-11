@@ -12,8 +12,6 @@ var addressLookup = function(event) {
     $('.results').empty();
     $('.message').empty();
 
-    console.log(isValidPostcode(searchValue));
-
     if(isValidPostcode(searchValue)) {
         $.ajax({
               type: 'GET',
@@ -35,9 +33,16 @@ var addressLookup = function(event) {
     }
 };
 
-var renderAddresses = function(addresses){
-    $.each(addresses, function(index, address){
-        $('.results').append('<li>'+ address.entry.property +' '+ address.entry.street + ' ' + address.entry.town + ' ' + address.entry.postcode +'</li>');
+var renderAddresses = function(addresses) {
+    $.each(addresses, function(index, address) {
+        var template = $.templates("#template"),
+            html = template.render({
+                    'property': address.entry.property,
+                    'street': address.entry.street,
+                    'town': address.entry.town,
+                    'postcode': address.entry.postcode
+                });
+        $('.results').append(html);
     });
 };
 
