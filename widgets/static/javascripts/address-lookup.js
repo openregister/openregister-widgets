@@ -7,7 +7,7 @@ var isValidPostcode = function(postcode) {
 
 var addressLookup = function(event) {
     var input = $("#address-lookup :input[name='search']"),
-        searchValue = input.val();
+        searchValue = input.val().trim();
     event.preventDefault();
     $('.results').empty();
     $('.message').empty();
