@@ -1,0 +1,31 @@
+{% extends "govuk_template.html" %}
+    {% block head %}
+        <link rel="stylesheet" type="text/css" href="{{asset_path}}stylesheets/country-picker.css">
+        <script src="{{asset_path}}javascripts/vendor/jquery-1.11.3.min.js"></script>
+        <script src="{{asset_path}}javascripts/vendor/jquery-ui.min.js"></script>
+        <script src="{{asset_path}}javascripts/vendor/jquery.select-to-autocomplete.js"></script>
+        <script src="{{asset_path}}javascripts/country-picker.js"></script>
+    {% endblock %}
+
+    {% block content %}
+    <h1 class="heading-xlarge">Country picker example</h1>
+
+    <form class="form">
+        <div class="form-group">
+            <label class="form-label-bold" for="country-selector">What country were you born in?</label>
+
+            <select name="Country" id="country-selector" autofocus="autofocus" autocorrect="off" autocomplete="off" class="auto-suggest form-control">
+              <option value="" selected="selected">Select Country</option>
+                  <option value="Afghanistan" data-alternative-spellings="AF افغانستان">Afghanistan</option>
+          <option value="Åland Islands" data-alternative-spellings="AX Aaland Aland" data-relevancy-booster="0.5">Åland Islands</option>
+          <option value="Albania" data-alternative-spellings="AL">Albania</option>
+          <option value="Algeria" data-alternative-spellings="DZ الجزائر">Algeria</option>
+              {% for entry in countries %}
+                 <option value="{{entry.entry.country}}" data-alternative-spellings="{{ entry.entry.country }}">{{entry.entry.name}}</option>
+              {% endfor %}
+            </select>
+        </div>
+        <input type="submit" value="Submit" class="button">
+    </form>
+
+{% endblock %}
