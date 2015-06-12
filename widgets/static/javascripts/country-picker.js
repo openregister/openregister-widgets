@@ -11,17 +11,16 @@ var renderCountries = function(countries) {
     countries.sort(function(a,b) {
         return a.entry.country.localeCompare(b.entry.country);
     });
+    var template = $.templates("#country-template");
     $.each(countries, function(index, country) {
-        var template = $.templates("#country-template"),
-            html = template.render({
+        var html = template.render({
                     'country': country.entry.country,
                     'name': country.entry.name
-                });
+        });
         $('#country-selector').append(html);
     });
     initAutoComplete();
 };
-
 
 var loadCountries = function() {
     $.ajax({
