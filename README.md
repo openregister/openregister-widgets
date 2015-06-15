@@ -22,16 +22,9 @@ Install python requirements.
 pip install -r requirements/dev.txt
 ```
 
-Set some environment variables. The following is required. Add as needed.
-
+Run the app
 ```
-export SETTINGS='config.DevelopmentConfig'
-```
-
-Once that this all done you can:
-
-```
-python manage.py server
+./run.sh
 ```
 
 Deployment
