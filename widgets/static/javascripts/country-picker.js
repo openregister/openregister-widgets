@@ -31,10 +31,9 @@ var loadCountries = function() {
         renderCountries(data);
       },
       error: function(xhr, options, error) {
-        if(xhr.status == 404) {
             console.log(error);
-        }
-    }});
+      }
+    });
 };
 
 $(document).ready(function(){
