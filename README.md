@@ -1,5 +1,4 @@
-===============================
-widgets
+Openregister Widgets
 ===============================
 
 Prerequisites
@@ -30,14 +29,4 @@ Run the app
 Deployment
 ----------
 
-In your production environment, make sure the ``SETTINGS`` environment variable is set to ``config.Config``.
-
-
-Shell
------
-
-To open the interactive shell, run ::
-
-```
-python manage.py shell
-```
+When deployed to Heroku, make sure the ``SETTINGS`` environment variable is set to ``config.Config``.
