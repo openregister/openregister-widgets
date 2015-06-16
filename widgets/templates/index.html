@@ -9,7 +9,12 @@
 
         {% raw %}
         <script id="address-template" type="text/x-jsrender">
-          <li>{{:property}} {{:street}} {{:town}} {{:postcode}}</li>
+            <option value="{{:address}}">
+                {{if property}}{{:property}},{{/if}}
+                {{if street}}{{:street}},{{/if}}
+                {{if town}}{{:town}},{{/if}}
+                {{if postcode}}{{:postcode}}{{/if}}
+            </option>
         </script>
         <script id="country-template" type="text/x-jsrender">
           <option value="{{:country}}" data-alternative-spellings="{{:country}}">{{:name}}</option>
@@ -48,10 +53,14 @@
             </div>
             <input type="submit" value="Submit" class="button">
         </form>
-
         <p class='message'></p>
-        <ul class="results">
-        </ul>
+        <div id="address-results" style="display: none">
+            <fieldset>
+                <label for="address">Address</label>
+                <select name="address" id="results">
+                </select>
+            </fieldset>
+        </div>
         <div class="about-panel">
             <p>This widget uses data from the <a href="{{address_register}}">Address Register</a></p>
         </div>

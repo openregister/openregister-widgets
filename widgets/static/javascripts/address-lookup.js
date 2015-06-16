@@ -12,6 +12,7 @@ var addressLookup = function(event) {
           contentType: 'application/json',
           success: function(data) {
             renderAddresses(data);
+            $('#address-results').show();
           },
           error: function(xhr, options, error) {
             console.log(error);
@@ -24,15 +25,17 @@ var addressLookup = function(event) {
 
 var renderAddresses = function(addresses) {
     //TODO get server to sort results
+    $('#results').append("<option value=\"\">" + addresses.length + " addresses found</option>");
     $.each(addresses, function(index, address) {
         var template = $.templates("#address-template"),
             html = template.render({
+                    'address': address.entry.address,
                     'property': address.entry.property,
                     'street': address.entry.street,
                     'town': address.entry.town,
                     'postcode': address.entry.postcode
                 });
-        $('.results').append(html);
+        $('#results').append(html);
     });
 };
 
