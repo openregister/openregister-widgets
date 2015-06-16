@@ -14,7 +14,7 @@ select {
     line-height: 1.31579;
     text-transform: none;
     margin: 0 0.6em 0 0;
-    max-width: 100%;
+    max-width: 75%;
     overflow: hidden;
     border: 1px solid #aaa;
 }
