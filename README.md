@@ -26,6 +26,12 @@ Run the app
 ./run.sh
 ```
 
+If you want to edit the css (hint: use the sass) - assuming ruby 2.2.2 is installed
+
+```
+bundle exec sass --watch sass/main.scss:static/stylesheets/main.css
+```
+
 Deployment
 ----------
 
