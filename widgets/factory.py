@@ -13,7 +13,6 @@ def create_app(config_filename):
     app.config.from_object(config_filename)
     register_errorhandlers(app)
     register_blueprints(app)
-    register_extensions(app)
     app.context_processor(asset_path_context_processor)
     return app
 
@@ -29,19 +28,3 @@ def register_errorhandlers(app):
 def register_blueprints(app):
     from widgets.frontend.views import frontend
     app.register_blueprint(frontend)
-
-def register_extensions(app):
-    import os
-    from flask.ext import assets
-    env = assets.Environment(app)
-    sass_base_dir = os.path.join(os.path.dirname(__file__), 'sass')
-    env.load_path = [sass_base_dir]
-    app.config['ASSETS_DEBUG'] = True
-
-    env.register( 'css',
-                assets.Bundle('main.scss',
-                              filters='scss',
-                              output='stylesheets/main.css',
-                              depends="**/*.scss")
-                )
-
