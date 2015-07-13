@@ -28,7 +28,7 @@ var loadCountries = function() {
       url: 'http://country.openregister.org/all.json',
       contentType: 'application/json',
       success: function(data) {
-        renderCountries(data);
+        renderCountries(data['entries']);
       },
       error: function(xhr, options, error) {
             console.log(error);
