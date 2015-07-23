@@ -8,17 +8,65 @@
 
         {% raw %}
         <script id="address-template" type="text/x-jsrender">
-            <option value="{{:address}}">
-                {{if property}}{{:property}},{{/if}}
-                {{if street}}{{:street}},{{/if}}
-                {{if town}}{{:town}},{{/if}}
-                {{if postcode}}{{:postcode}}{{/if}}
-            </option>
-        </script>
-        <script id="country-template" type="text/x-jsrender">
-          <option value="{{:country}}" data-alternative-spellings="{{:country}}">{{:name}}</option>
+            <label for="{{:address}}" class="block-label">
+                    {{if property}}{{:property}},{{/if}}
+                    {{if street}}{{:street}},{{/if}}
+                    {{if town}}{{:town}},{{/if}}
+                    {{if postcode}}{{:postcode}}{{/if}}
+            <input type="radio" name="address" id="{{:address}}" checked value="{{:address}}"></label>
+
         </script>
         {% endraw %}
+
+        <style type="text/css">
+
+            .js-enabled .js-form-select label {
+                width: 100%;
+            }
+
+            .block-label {
+              margin: 1px;
+              background-color: #F8F8F8;
+            }
+
+            .block-label:last-child {
+              margin-bottom: 15px;
+            }
+
+            #select-wrapper {
+                height: 300px;
+                border: 1px solid #bfc1c3;
+                overflow-x: hide;
+                overflow-y: scroll;
+            }
+
+
+            .js-enabled .js-form-select {
+                padding: 0;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                font-size: 19px;
+                line-height: 1.3157894737;
+                font-weight: 400;
+                text-transform: none;
+            }
+
+            .js-enabled .js-form-select input:checked + label {
+                display: block;
+                margin-right: 30px;
+            }
+
+            #address-not-found {
+              padding: 20px;
+            }
+
+            #address-view {
+              margin-top: 20px;
+            }
+
+        </style>
+
     {% endblock %}
 
 {% block content %}
@@ -27,8 +75,10 @@
 
     <!-- country picker -->
     <div class="widget">
-        <h2 class="heading-medium">Country picker example</h2>
-        <form class="form" id="country-form">
+      <div class="row">
+        <div class="columns-two-thirds">
+          <h2 class="heading-medium">Country picker example</h2>
+          <form class="form" id="country-form">
             <div class="form-group">
                 <label class="form-label-bold" for="country-selector">Pick a country</label>
                 <select name="country" id="country-selector" autofocus="autofocus" autocorrect="off" autocomplete="off" class="auto-suggest form-control">
@@ -36,33 +86,51 @@
                 </select>
             </div>
             <input type="submit" value="Submit" class="button">
-        </form>
-        <div class="about-panel">
+          </form>
+          <div class="about-panel">
             <p>This widget uses data from the <a href="{{country_register}}">Country Register</a></p>
-        </div>
+          </div>
+        </div><!--end cols -->
+      </div><!--end row -->
     </div><!--end country picker -->
 
     <!-- address lookup -->
     <div class="widget">
-        <h2 class="heading-medium">Address lookup example</h2>
-        <form id="address-lookup" class="form" method="post">
+      <div class="row">
+        <div class="columns-two-thirds">
+          <h2 class="heading-medium">Address lookup example</h2>
+          <form id="address-lookup" class="form" method="post">
             <div class="form-group">
                 <label class="form-label-bold" for="search">Find an address</label>
-                <input type="text" id="search" name="search"/>
+                <input type="text" id="search" form-control name="search"/>
             </div>
-            <input type="submit" value="Submit" class="button">
-        </form>
-        <p class='message'></p>
-        <div id="address-results" style="display: none">
-            <fieldset>
-                <label for="address">Address</label>
-                <select name="address" id="results">
-                </select>
-            </fieldset>
-        </div>
-        <div class="about-panel">
+            <input type="submit" value="Continue" class="button">
+          </form>
+          <p class='message'></p>
+          <div id="address-selector" style="display: none">
+
+            <form id="address-list" method="POST" action="{{url_for('frontend.address')}}">
+                <h3 class="heading-small">Select your address</h3>
+                  <div id="select-wrapper">
+                    <div class="form-group">
+                      <div class="js-form-select" id="addresses">
+                      </div>
+                    </div>
+                    <div id="address-not-found">
+                       <p><a href=''>The address is not in the list</a>
+                    </div>
+                  </div>
+                  <div id="address-view">
+                    <input type="submit" value="Go to address" class="button">
+                  </div>
+              </form>
+
+          </div>
+          <div class="about-panel">
             <p>This widget uses data from the <a href="{{address_register}}">Address Register</a></p>
-        </div>
+          </div>
+        </div><!--end cols -->
+      </div><!--end row -->
     </div><!--end address lookup-->
 
 {% endblock %}

@@ -2,8 +2,8 @@ var addressLookup = function(event) {
     var input = $("#address-lookup :input[name='search']"),
         searchValue = input.val().trim();
     event.preventDefault();
-    $('#address-results').hide();
-    $('#results').empty();
+    $('#address-selector').hide();
+    $('#addresses').empty();
     $('.message').empty();
 
     $.ajax({
@@ -15,12 +15,12 @@ var addressLookup = function(event) {
                 $('.message').text('Too many results. Search for for something more specific.');
             } else {
                 renderAddresses(data);
-                $('#address-results').show();
+                $('#address-selector').show();
             }
           },
           error: function(xhr, options, error) {
             console.log(error);
-            $('#results').empty();
+            $('#addresses').empty();
             $('.message').text('No results');
         }
     });
@@ -31,7 +31,6 @@ var renderAddresses = function(addresses) {
     addresses.sort(function(a,b) {
         return a.entry.street.localeCompare(b.entry.street);
     });
-    $('#results').append("<option value=\"\">" + addresses.length + " addresses found</option>");
     $.each(addresses, function(index, address) {
         var template = $.templates("#address-template"),
             html = template.render({
@@ -41,10 +40,15 @@ var renderAddresses = function(addresses) {
                 'town': address.entry.town,
                 'postcode': address.entry.postcode
             });
-        $('#results').append(html);
+        $('#addresses').append(html);
     });
 };
 
+
 $(document).ready(function(){
     $('#address-lookup').submit(addressLookup);
+    $( ".js-form-select, .js-form-select label" ).click(function() {
+        $( this ).addClass("focused selected");
+    });
+
 });
