@@ -32,3 +32,8 @@ def country():
     country_register = current_app.config['COUNTRY_REGISTER']
     url = "%s/country/%s" % (country_register, country)
     return redirect(url)
+
+
+@frontend.route('/suggest-address')
+def suggest_address():
+    return render_template('suggest_address.html')

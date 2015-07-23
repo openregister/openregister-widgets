@@ -1365,7 +1365,7 @@ select {
   margin-bottom: 15px; }
 
 #select-wrapper {
-  height: 300px;
+  height: 250px;
   border: 1px solid #bfc1c3;
   overflow-x: hide;
   overflow-y: scroll; }
@@ -1385,7 +1385,7 @@ select {
   margin-right: 30px; }
 
 #address-not-found {
-  padding: 20px; }
+  padding: 20px 0px 0px 45px; }
 
 #address-view {
   margin-top: 20px; }
