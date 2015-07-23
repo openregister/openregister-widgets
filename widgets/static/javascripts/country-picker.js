@@ -3,9 +3,6 @@ var initAutoComplete = function() {
 };
 
 var renderCountries = function(countries) {
-    countries.sort(function(a,b) {
-        return a.entry.country.localeCompare(b.entry.country);
-    });
     var template = $.templates("#country-template");
     $.each(countries, function(index, country) {
         var html = template.render({
@@ -20,7 +17,7 @@ var renderCountries = function(countries) {
 var loadCountries = function() {
     $.ajax({
       type: 'GET',
-      url: 'http://country.openregister.org/all.json',
+      url: '/countries.json',
       contentType: 'application/json',
       success: function(data) {
         renderCountries(data['entries']);

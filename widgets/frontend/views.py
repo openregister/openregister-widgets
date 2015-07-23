@@ -3,11 +3,15 @@ from flask import (
     render_template,
     current_app,
     request,
-    redirect
+    redirect,
+    jsonify
 )
+
+import requests
 
 frontend = Blueprint('frontend', __name__, template_folder='templates')
 
+headers = {'Content-type': 'application/json'}
 
 @frontend.route('/')
 def index():
@@ -37,3 +41,16 @@ def country():
 @frontend.route('/suggest-address')
 def suggest_address():
     return render_template('suggest_address.html')
+
+
+@frontend.route('/countries.json')
+def countries():
+    country_register = current_app.config['COUNTRY_REGISTER']
+    url = "%s/all.json" % country_register
+    countries = []
+    for i in range(7):
+        params = {'_page': i}
+        resp = requests.get(url, params=params, headers=headers)
+        countries += resp.json()['entries']
+    sorted_countries = sorted(countries, key=lambda country: country['entry']['name'])
+    return jsonify({'entries': sorted_countries})
