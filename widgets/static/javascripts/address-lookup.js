@@ -43,7 +43,7 @@ var renderAddresses = function(addresses) {
         $('#addresses').append(html);
     });
 
-    $('.block-label').click(function(){
+    $('.block-label').click(function() {
         $('#address-list').submit();
     });
 };
