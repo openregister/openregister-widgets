@@ -23,3 +23,12 @@ def address():
     address_register = current_app.config['ADDRESS_REGISTER']
     url = "%s/address/%s" % (address_register, uprn)
     return redirect(url)
+
+
+@frontend.route('/country', methods=['POST'])
+def country():
+    country = request.form.getlist('country')[0]
+    current_app.logger.info(country)
+    country_register = current_app.config['COUNTRY_REGISTER']
+    url = "%s/country/%s" % (country_register, country)
+    return redirect(url)

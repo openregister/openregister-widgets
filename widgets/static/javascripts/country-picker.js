@@ -1,10 +1,5 @@
-var initAutoComplete = function(){
+var initAutoComplete = function() {
     $('.auto-suggest').selectToAutocomplete();
-        $('#country-form').submit(function(){
-        alert("You chose: " + $(this).serialize() );
-        $('#country-form').trigger("reset");
-        return false;
-    });
 };
 
 var renderCountries = function(countries) {
@@ -36,6 +31,6 @@ var loadCountries = function() {
     });
 };
 
-$(document).ready(function(){
+$(document).ready(function() {
     loadCountries();
 });

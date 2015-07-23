@@ -1354,6 +1354,42 @@ select {
 #address-results label {
   display: block; }
 
+.js-enabled .js-form-select label {
+  width: 100%; }
+
+.block-label {
+  margin: 1px;
+  background-color: #F8F8F8; }
+
+.block-label:last-child {
+  margin-bottom: 15px; }
+
+#select-wrapper {
+  height: 300px;
+  border: 1px solid #bfc1c3;
+  overflow-x: hide;
+  overflow-y: scroll; }
+
+.js-enabled .js-form-select {
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 19px;
+  line-height: 1.3157894737;
+  font-weight: 400;
+  text-transform: none; }
+
+.js-enabled .js-form-select input:checked + label {
+  display: block;
+  margin-right: 30px; }
+
+#address-not-found {
+  padding: 20px; }
+
+#address-view {
+  margin-top: 20px; }
+
 .ui-autocomplete {
   padding: 0;
   list-style: none;
