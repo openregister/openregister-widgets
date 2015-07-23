@@ -13,7 +13,7 @@
                     {{if street}}{{:street}},{{/if}}
                     {{if town}}{{:town}},{{/if}}
                     {{if postcode}}{{:postcode}}{{/if}}
-            <input type="radio" name="address" id="{{:address}}" checked value="{{:address}}"></label>
+            <input type="radio" style="display:none" name="address" id="{{:address}}" checked value="{{:address}}"></label>
         </script>
          <script id="country-template" type="text/x-jsrender">
           <option value="{{:country}}" data-alternative-spellings="{{:country}}">{{:name}}</option>
@@ -72,9 +72,6 @@
                     <div id="address-not-found">
                        <p><a href=''>The address is not in the list</a>
                     </div>
-                  </div>
-                  <div id="address-view">
-                    <input type="submit" value="Go to address" class="button">
                   </div>
               </form>
 
