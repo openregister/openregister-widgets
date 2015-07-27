@@ -42,17 +42,9 @@ var renderAddresses = function(addresses) {
             });
         $('#addresses').append(html);
     });
-
-    $('.block-label').click(function() {
-        $('#address-list').submit();
-    });
 };
 
 
 $(document).ready(function(){
     $('#address-lookup').submit(addressLookup);
-    // $( ".js-form-select, .js-form-select label" ).click(function() {
-    //     $( this ).addClass("focused selected");
-    // });
-
 });
