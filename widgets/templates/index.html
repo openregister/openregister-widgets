@@ -7,17 +7,19 @@
         <script src="{{asset_path}}javascripts/address-lookup.js"></script>
 
         {% raw %}
+
         <script id="address-template" type="text/x-jsrender">
-            <label for="{{:address}}" class="block-label">
+            <li><a href="http://address.openregister.org/address/{{:address}}">
                     {{if property}}{{:property}},{{/if}}
                     {{if street}}{{:street}},{{/if}}
                     {{if town}}{{:town}},{{/if}}
-                    {{if postcode}}{{:postcode}}{{/if}}
-            <input type="radio" style="display: none" name="address" id="{{:address}}" checked value="{{:address}}"></label>
+                    {{if postcode}}{{:postcode}}{{/if}}</a></li>
         </script>
-         <script id="country-template" type="text/x-jsrender">
+
+        <script id="country-template" type="text/x-jsrender">
           <option value="{{:country}}" data-alternative-spellings="{{:country}}">{{:name}}</option>
         </script>
+
         {% endraw %}
 
     {% endblock %}
@@ -61,20 +63,14 @@
           </form>
           <p class='message'></p>
           <div id="address-selector" style="display: none">
-
-            <form id="address-list" method="POST" action="{{url_for('frontend.address')}}">
-                <h3 class="heading-small">Select your address</h3>
-                  <div id="select-wrapper">
-                    <div class="form-group">
-                      <div class="js-form-select" id="addresses">
-                      </div>
-                    </div>
-                    <div id="address-not-found">
-                       <p><a href="{{url_for('frontend.suggest_address')}}">The address is not in the list</a>
-                    </div>
-                  </div>
-              </form>
-
+            <h3 class="heading-small">Select your address</h3>
+            <div id="address-wrapper">
+              <ul id="addresses">
+              </ul>
+              <div id="address-not-found">
+                 <p><a href="{{url_for('frontend.suggest_address')}}">The address is not in the list</a>
+              </div>
+            </div>
           </div>
           <div class="about-panel">
             <p>This widget uses data from the <a href="{{address_register}}">Address Register</a></p>

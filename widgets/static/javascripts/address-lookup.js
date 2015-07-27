@@ -51,8 +51,8 @@ var renderAddresses = function(addresses) {
 
 $(document).ready(function(){
     $('#address-lookup').submit(addressLookup);
-    $( ".js-form-select, .js-form-select label" ).click(function() {
-        $( this ).addClass("focused selected");
-    });
+    // $( ".js-form-select, .js-form-select label" ).click(function() {
+    //     $( this ).addClass("focused selected");
+    // });
 
 });
