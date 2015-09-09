@@ -27,11 +27,10 @@ var addressLookup = function(event) {
 };
 
 var renderAddresses = function(addresses) {
-    //TODO get server to sort results
-    addresses.sort(function(a,b) {
+    addresses.entries.sort(function(a,b) {
         return a.entry.street.localeCompare(b.entry.street);
     });
-    $.each(addresses, function(index, address) {
+    $.each(addresses.entries, function(index, address) {
         var template = $.templates("#address-template"),
             html = template.render({
                 'address': address.entry.address,
