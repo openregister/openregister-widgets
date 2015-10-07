@@ -8,7 +8,7 @@ var addressLookup = function(event) {
 
     $.ajax({
           type: 'GET',
-          url: '/address-search?q='+searchValue+'&q.options={fields:["postcode","street"]}',
+          url: '/address-search?q='+searchValue+'&q.options={fields:["postcode","street"]}&sort=street asc',
           contentType: 'application/json',
           success: function(data) {
                 renderAddresses(data);
@@ -23,9 +23,6 @@ var addressLookup = function(event) {
 };
 
 var renderAddresses = function(addresses) {
-    addresses.hits.hit.sort(function(a,b) {
-        return a.fields.street.localeCompare(b.fields.street);
-    });
     $.each(addresses.hits.hit, function(index, address) {
         var template = $.templates("#address-template"),
             html = template.render({
