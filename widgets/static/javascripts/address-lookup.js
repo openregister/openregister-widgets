@@ -8,15 +8,11 @@ var addressLookup = function(event) {
 
     $.ajax({
           type: 'GET',
-          url: 'http://address.openregister.org/search?_query='+searchValue+'&_representation=json',
+          url: '/address-search?q='+searchValue+'&q.options={fields:["postcode","street"]}',
           contentType: 'application/json',
           success: function(data) {
-            if(data.length > 1000){
-                $('.message').text('Too many results. Search for for something more specific.');
-            } else {
                 renderAddresses(data);
                 $('#address-selector').show();
-            }
           },
           error: function(xhr, options, error) {
             console.log(error);
@@ -27,17 +23,17 @@ var addressLookup = function(event) {
 };
 
 var renderAddresses = function(addresses) {
-    addresses.entries.sort(function(a,b) {
-        return a.entry.street.localeCompare(b.entry.street);
+    addresses.hits.hit.sort(function(a,b) {
+        return a.fields.street.localeCompare(b.fields.street);
     });
-    $.each(addresses.entries, function(index, address) {
+    $.each(addresses.hits.hit, function(index, address) {
         var template = $.templates("#address-template"),
             html = template.render({
-                'address': address.entry.address,
-                'property': address.entry.property,
-                'street': address.entry.street,
-                'town': address.entry.town,
-                'postcode': address.entry.postcode
+                'address': address.fields.address,
+                'property': address.fields.property,
+                'street': address.fields.street,
+                'town': address.fields.town,
+                'postcode': address.fields.postcode
             });
         $('#addresses').append(html);
     });

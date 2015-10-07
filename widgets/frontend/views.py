@@ -1,5 +1,6 @@
 from flask import (
     Blueprint,
+    Response,
     render_template,
     current_app,
     request,
@@ -19,6 +20,10 @@ def index():
     country_register = current_app.config['COUNTRY_REGISTER']
     return render_template('index.html', country_register=country_register, address_register=address_register)
 
+@frontend.route('/address-search')
+def search():
+    return Response(requests.get(current_app.config['ADDRESS_SEARCH'], params=request.args).content,
+                    mimetype='application/json')
 
 @frontend.route('/country', methods=['POST'])
 def country():
