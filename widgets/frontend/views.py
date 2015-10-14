@@ -42,11 +42,10 @@ def suggest_address():
 @frontend.route('/countries.json')
 def countries():
     country_register = current_app.config['COUNTRY_REGISTER']
-    url = "%s/all.json" % country_register
+    url = "%s/current.json" % country_register
+    resp = requests.get(url, headers=headers)
     countries = []
-    for i in range(7):
-        params = {'_page': i}
-        resp = requests.get(url, params=params, headers=headers)
-        countries += resp.json()['entries']
-    sorted_countries = sorted(countries, key=lambda country: country['entry']['name'])
+    for e in resp.json():
+        countries.append(e['entry'])
+    sorted_countries = sorted(countries, key=lambda country: country['name'])
     return jsonify({'entries': sorted_countries})
