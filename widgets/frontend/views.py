@@ -1,5 +1,6 @@
 from flask import (
     Blueprint,
+    Response,
     render_template,
     current_app,
     request,
@@ -19,6 +20,10 @@ def index():
     country_register = current_app.config['COUNTRY_REGISTER']
     return render_template('index.html', country_register=country_register, address_register=address_register)
 
+@frontend.route('/address-search')
+def search():
+    return Response(requests.get(current_app.config['ADDRESS_SEARCH'], params=request.args).content,
+                    mimetype='application/json')
 
 @frontend.route('/country', methods=['POST'])
 def country():
@@ -37,11 +42,13 @@ def suggest_address():
 @frontend.route('/countries.json')
 def countries():
     country_register = current_app.config['COUNTRY_REGISTER']
-    url = "%s/all.json" % country_register
+    url = "%s/feed.json?pageSize=300" % country_register
+    resp = requests.get(url, headers=headers)
     countries = []
-    for i in range(7):
-        params = {'_page': i}
-        resp = requests.get(url, params=params, headers=headers)
-        countries += resp.json()['entries']
-    sorted_countries = sorted(countries, key=lambda country: country['entry']['name'])
+    current_countries_code = []
+    for e in resp.json():
+        if e['entry']['country'] not in current_countries_code :
+            current_countries_code.append(e['entry']['country'])
+            countries.append(e['entry'])
+    sorted_countries = sorted(countries, key=lambda country: country['name'])
     return jsonify({'entries': sorted_countries})

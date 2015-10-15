@@ -6,8 +6,8 @@ var renderCountries = function(countries) {
     var template = $.templates("#country-template");
     $.each(countries, function(index, country) {
         var html = template.render({
-                    'country': country.entry.country,
-                    'name': country.entry.name
+                    'country': country.country,
+                    'name': country.name
         });
         $('#country-selector').append(html);
     });
