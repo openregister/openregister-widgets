@@ -4,10 +4,8 @@ import os
 from flask.ext.script import Shell, Server, Manager
 
 from widgets import app
-import logging
 
 app.debug = True
-logging.basicConfig(level=logging.DEBUG)
 
 port = os.environ.get('PORT', 8000)
 
