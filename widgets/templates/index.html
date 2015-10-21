@@ -6,15 +6,18 @@
         <script src="{{asset_path}}javascripts/country-picker.js"></script>
         <script src="{{asset_path}}javascripts/address-lookup.js"></script>
 
-        {% raw %}
 
         <script id="address-template" type="text/x-jsrender">
-            <li><a href="http://address.prod.openregister.org/address/{{:address}}">
+            <li><a href="{{ address_register + '/address/{{:address}}' }}">
+        {% raw %}
                     {{if property}}{{:property}},{{/if}}
                     {{if street}}{{:street}},{{/if}}
                     {{if town}}{{:town}},{{/if}}
                     {{if postcode}}{{:postcode}}{{/if}}</a></li>
+        {% endraw %}
         </script>
+
+        {% raw %}
 
         <script id="country-template" type="text/x-jsrender">
           <option value="{{:country}}" data-alternative-spellings="{{:country}}">{{:name}}</option>
