@@ -42,7 +42,7 @@ def suggest_address():
 @frontend.route('/countries.json')
 def countries():
     country_register = current_app.config['COUNTRY_REGISTER']
-    url = "%s/feed.json?pageSize=300" % country_register
+    url = "%s/entries.json?page-size=300" % country_register
     resp = requests.get(url, headers=headers)
     countries = []
     current_countries_code = []
