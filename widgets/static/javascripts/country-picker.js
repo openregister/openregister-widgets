@@ -18,7 +18,6 @@ var loadCountries = function() {
     $.ajax({
       type: 'GET',
       url: '/countries.json',
-      contentType: 'application/json',
       success: function(data) {
         renderCountries(data['entries']);
       },
