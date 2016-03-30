@@ -42,13 +42,10 @@ def suggest_address():
 @frontend.route('/countries.json')
 def countries():
     country_register = current_app.config['COUNTRY_REGISTER']
-    url = "%s/entries.json?page-size=300" % country_register
+    url = "%s/records.json?page-size=300" % country_register
     resp = requests.get(url, headers=headers)
     countries = []
-    current_countries_code = []
     for e in resp.json():
-        if e['entry']['country'] not in current_countries_code :
-            current_countries_code.append(e['entry']['country'])
-            countries.append(e['entry'])
-    sorted_countries = sorted(countries, key=lambda country: country['name'])
-    return jsonify({'entries': sorted_countries})
+        countries.append(e['entry'])
+    countries = sorted(countries, key=lambda country: country['name'])
+    return jsonify({'entries': countries})
