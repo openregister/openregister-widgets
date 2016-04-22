@@ -7,7 +7,7 @@ class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY')
 
     COUNTRY_REGISTER = os.environ.get('COUNTRY_REGISTER', 'https://country.register.gov.uk')
-    ADDRESS_REGISTER = os.environ.get('ADDRESS_REGISTER', 'http://address.openregister.org')
+    ADDRESS_REGISTER = os.environ.get('ADDRESS_REGISTER', 'http://address.alpha.openregister.org')
     ADDRESS_SEARCH = os.environ.get('ADDRESS_SEARCH', 'http://address-search.openregister.org/2013-01-01/search')
 
 class DevelopmentConfig(Config):
