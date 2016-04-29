@@ -44,10 +44,8 @@ def countries():
     country_register = current_app.config['COUNTRY_REGISTER']
     url = "%s/records.json?page-size=300" % country_register
     resp = requests.get(url, headers=headers)
-    countriesJson = resp.json()
     countries = []
-    for key in countriesJson:
-        countries.append(countriesJson[key])
-
+    for e in resp.json():
+        countries.append(e['entry'])
     countries = sorted(countries, key=lambda country: country['name'])
     return jsonify({'entries': countries})
