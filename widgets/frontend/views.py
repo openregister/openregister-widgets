@@ -16,14 +16,8 @@ headers = {'Content-type': 'application/json'}
 
 @frontend.route('/')
 def index():
-    address_register = current_app.config['ADDRESS_REGISTER']
     country_register = current_app.config['COUNTRY_REGISTER']
-    return render_template('index.html', country_register=country_register, address_register=address_register)
-
-@frontend.route('/address-search')
-def search():
-    return Response(requests.get(current_app.config['ADDRESS_SEARCH'], params=request.args).content,
-                    mimetype='application/json')
+    return render_template('index.html', country_register=country_register)
 
 @frontend.route('/country', methods=['POST'])
 def country():
@@ -32,11 +26,6 @@ def country():
     country_register = current_app.config['COUNTRY_REGISTER']
     url = "%s/country/%s" % (country_register, country)
     return redirect(url)
-
-
-@frontend.route('/suggest-address')
-def suggest_address():
-    return render_template('suggest_address.html')
 
 
 @frontend.route('/countries.json')

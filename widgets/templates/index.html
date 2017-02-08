@@ -4,18 +4,7 @@
         <script src="{{asset_path}}javascripts/vendor/jquery.select-to-autocomplete.js"></script>
         <script src="{{asset_path}}javascripts/vendor/jsrender.min.js"></script>
         <script src="{{asset_path}}javascripts/country-picker.js"></script>
-        <script src="{{asset_path}}javascripts/address-lookup.js"></script>
 
-
-        <script id="address-template" type="text/x-jsrender">
-            <li><a href="{{ address_register + '/address/{{:address}}' }}">
-        {% raw %}
-                    {{if property}}{{:property}},{{/if}}
-                    {{if street}}{{:street}},{{/if}}
-                    {{if town}}{{:town}},{{/if}}
-                    {{if postcode}}{{:postcode}}{{/if}}</a></li>
-        {% endraw %}
-        </script>
 
         {% raw %}
 
