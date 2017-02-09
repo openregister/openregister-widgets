@@ -1351,29 +1351,6 @@ select {
   overflow: hidden;
   border: 1px solid #aaa; }
 
-#address-wrapper {
-  height: 250px;
-  border: 1px solid #bfc1c3;
-  overflow-x: hidden;
-  overflow-y: scroll; }
-
-#addresses li {
-  background: #f8f8f8;
-  border: 1px solid #dee0e2;
-  margin: 1px; }
-
-#addresses li:hover {
-  border: 1px solid #000; }
-
-#addresses li a {
-  display: block;
-  padding: 20px;
-  width: 100%;
-  height: 100%; }
-
-#address-not-found {
-  padding: 20px 0px 0px 45px; }
-
 .ui-autocomplete {
   padding: 0;
   list-style: none;
